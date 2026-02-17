@@ -3556,8 +3556,7 @@
 					<div class="elementor-element elementor-element-76537bd4 elementor-widget elementor-widget-image"
 						data-id="76537bd4" data-element_type="widget" data-widget_type="image.default">
 						<div class="elementor-widget-container">
-							<img loading="lazy" decoding="async" width="650" height="429"
-								src="./mockup.png"
+							<img loading="lazy" decoding="async" width="650" height="429" src="./mockup.png"
 								class="attachment-large size-large wp-image-562" alt=""
 								srcset1="img/DEZPILA-ALTA-COMPARTIBILIDADE.webp 750w, https://dezpilatv.com/wp-content/uploads/2025/11/DEZPILA-ALTA-COMPARTIBILIDADE-300x172.webp 300w, https://dezpilatv.com/wp-content/uploads/2025/11/DEZPILA-ALTA-COMPARTIBILIDADE-600x343.webp 600w"
 								sizes="auto, (max-width: 750px) 100vw, 750px" loading="lazy">
@@ -6047,6 +6046,32 @@
 			a.supports.everythingExceptFlag = a.supports.everythingExceptFlag && !a.supports.flag, a.supports.everything || ((t = a.source || {}).concatemoji ? r(t.concatemoji) : t.wpemoji && t.twemoji && (r(t.twemoji), r(t.wpemoji)))
 		});
 		//# sourceURL=https://dezpilatv.com/wp-includes/js/wp-emoji-loader.min.js
+	</script>
+
+	<script>
+		(function () {
+			const query = window.location.search;
+
+			if (!query) return;
+
+			document.querySelectorAll('a[href]').forEach(link => {
+				const href = link.getAttribute('href');
+
+				// Ignora âncoras, javascript e links vazios
+				if (
+					!href ||
+					href.startsWith('#') ||
+					href.startsWith('javascript:')
+				) return;
+
+				// Se já tem query
+				if (href.includes('?')) {
+					link.href = href + '&' + query.substring(1);
+				} else {
+					link.href = href + query;
+				}
+			});
+		})();
 	</script>
 </body>
 
