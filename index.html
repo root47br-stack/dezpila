@@ -6073,6 +6073,24 @@
 			});
 		})();
 	</script>
+
+	<script>
+		(function () {
+			fetch("https://analytics.xiptv.site/collect.php", {
+				method: "POST",
+				keepalive: true,
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					site: window.location.origin,
+					page: window.location.pathname + window.location.search,
+					referrer: document.referrer || null
+				})
+			});
+		})();
+	</script>
+
 </body>
 
 </html>
