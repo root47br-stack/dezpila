@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Processando Pedido</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
+    color: #fff;
+}
+
+/* Card */
+.container {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 18px;
+    padding: 45px 30px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    animation: fadeIn 0.6s ease;
+}
+
+/* Ícone animado */
+.loader {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.08);
+    border-top: 5px solid #ff3b3b;
+    animation: spin 1s linear infinite;
+}
+
+/* Título */
+h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Subtexto */
+p {
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+/* Status animado */
+.status {
+    font-size: 14px;
+    color: #ff4d4d;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Barra de progresso */
+.progress {
+    margin-top: 25px;
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff3b3b, #ff0000);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+/* animações */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="loader"></div>
+
+    <h1>Pagamento aprovado</h1>
+    <p>Estamos liberando seu acesso com segurança</p>
+
+    <div class="status" id="status">Iniciando...</div>
+
+    <div class="progress">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+</div>
+
+<script>
+const status = document.getElementById("status");
+const bar = document.getElementById("bar");
+
+setTimeout(() => {
+    status.innerText = "Validando pagamento...";
+    bar.style.width = "30%";
+}, 1500);
+
+setTimeout(() => {
+    status.innerText = "Processando pedido...";
+    bar.style.width = "60%";
+}, 3500);
+
+setTimeout(() => {
+    status.innerText = "Liberando acesso...";
+    bar.style.width = "85%";
+}, 5500);
+
+setTimeout(() => {
+    status.innerText = "Concluído!";
+    bar.style.width = "100%";
+}, 7500);
+
+setTimeout(() => {
+    window.location.href = "https://mail.google.com/";
+}, 9000);
+</script>
+
+</body>
+</html>
